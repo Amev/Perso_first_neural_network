@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   nnw_file.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/03/02 15:39:47 by vame              #+#    #+#             */
+/*   Updated: 2015/03/02 16:12:47 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "neural_network_1.h"
 
 /*
@@ -23,9 +35,9 @@ int				open_nnw_file(t_data *data)
 	while (read && read[j++])
 	{
 		i = 0;
-		line = ft_nbrsplit_db(read[j - 1]);
+		line = ft_nbrsplit(read[j - 1]); // faire ft_nbrsplit_db
 		while (line && line[i++])
-			data->weight[j - 1][i - 1] = ft_atodb(line[i - 1]);
+			data->weight[j - 1][i - 1] = ft_atoi(line[i - 1]); // faire ft_atodb
 		if (i != 31)
 			exit(print_error(FMT_ERR));
 	}

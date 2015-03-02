@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weight.c                                           :+:      :+:    :+:   */
+/*   ft_strlen_c.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/02 15:39:31 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:05:19 by vame             ###   ########.fr       */
+/*   Created: 2015/02/02 13:24:28 by vame              #+#    #+#             */
+/*   Updated: 2015/02/06 16:16:16 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "neural_network_1.h"
+#include "libft.h"
 
-void			weight_init(float ***weight)
+int			ft_strlen_c(char *str, size_t *len, char c)
 {
-	int 		i;
-	int 		j;
-
-	j = 0;
-	while (j < 10)
+	*len = 0;
+	while (str && *str)
 	{
-		i = 0;
-		while (i < 30)
-			(*weight)[i++][j] = (float)(rand()%100 - 50);
-		j++;
+		if (*str == c)
+			return (1);
+		str++;
+		*len += 1;
 	}
-}
-
-float			weight_calc(float value, int wanted_v, int out_v, int in_v)
-{
-	return (value + (wanted_v - out_v) * in_v * 10.00);
+	return (0);
 }

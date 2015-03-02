@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weight.c                                           :+:      :+:    :+:   */
+/*   libft_ext.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/02 15:39:31 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:05:19 by vame             ###   ########.fr       */
+/*   Created: 2015/01/23 11:14:09 by vame              #+#    #+#             */
+/*   Updated: 2015/02/13 13:45:01 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "neural_network_1.h"
+#ifndef LIBFT_EXT_H
+# define LIBFT_EXT_H
 
-void			weight_init(float ***weight)
-{
-	int 		i;
-	int 		j;
+# include "libft/libft.h"
+# include "gnl/get_next_line.h"
+# include "printf/ft_printf.h"
 
-	j = 0;
-	while (j < 10)
-	{
-		i = 0;
-		while (i < 30)
-			(*weight)[i++][j] = (float)(rand()%100 - 50);
-		j++;
-	}
-}
-
-float			weight_calc(float value, int wanted_v, int out_v, int in_v)
-{
-	return (value + (wanted_v - out_v) * in_v * 10.00);
-}
+#endif

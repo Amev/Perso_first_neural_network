@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_tools.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/03/02 15:40:08 by vame              #+#    #+#             */
+/*   Updated: 2015/03/02 16:22:00 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "neural_network_1.h"
 
 float			**create_array(int x, int y)
@@ -37,11 +49,23 @@ char			**join_line(char **line, char ***read)
 
 char			**read_file(char *path)
 {
+	int			fd;
 	int			res;
+	char		*tmp;
 	char		*line;
 	char		**read;
 
-	if ((fd = open(path, O_RDONLY) == -1)
+	tmp = NULL;
+	read = NULL;
+	if (path[0] != '/')
+	{
+		if(!(tmp = ft_strjoin("/", path)))
+			exit(print_error(MAL_ERR));
+		path = tmp;
+	}
+	if (access(path, X_OK))
+		return (NULL);
+	if ((fd = open(path, O_RDONLY)) == -1)
 		exit(print_error(OPN_ERR));
 	while ((res = get_next_line_2(fd, &line)) == 1)
 		read = join_line(&line, &read);
@@ -49,5 +73,7 @@ char			**read_file(char *path)
 		exit(print_error(GNL_ERR));
 	if (close(fd) == -1)
 		exit(print_error(CLS_ERR));
+	if (tmp)
+		ft_strdel(&tmp);
 	return (read);
 }

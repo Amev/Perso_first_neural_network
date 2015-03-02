@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:40:08 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:22:00 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/02 17:11:00 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ char			**read_file(char *path)
 
 	tmp = NULL;
 	read = NULL;
-	if (path[0] != '/')
+	if (path[0] != '.')
 	{
-		if(!(tmp = ft_strjoin("/", path)))
+		if (path[0] != '/' && !(tmp = ft_strjoin("./", path)))
+			exit(print_error(MAL_ERR));
+		if (path[0] == '/' && !(tmp = ft_strjoin("/", path)))
 			exit(print_error(MAL_ERR));
 		path = tmp;
 	}
-	if (access(path, X_OK))
+	if (access(path, F_OK))
 		return (NULL);
 	if ((fd = open(path, O_RDONLY)) == -1)
 		exit(print_error(OPN_ERR));

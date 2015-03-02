@@ -6,7 +6,7 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 17:25:23 by vame              #+#    #+#             */
-/*   Updated: 2015/02/10 13:31:23 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/02 16:49:27 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit_esc(char const *s, char c);
 char				**ft_nbrsplit(char const *s);
+char				**ft_nbrsplit_db(char const *s);
 char				*ft_itoa(long long int n);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);

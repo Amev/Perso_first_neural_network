@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:40:25 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:13:18 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/02 17:07:24 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define RED_ERR 3
 # define CLS_ERR 4
 # define GNL_ERR 5
-# define FMT_ERR 5
+# define FMT_ERR 6
 
 typedef struct 		s_data
 {

@@ -53,7 +53,9 @@ float				weight_calc(float value, int wanted_v, int out_v, int in_v);
 **	fonctions du menu
 */
 
-int					menu(t_data *data);
+void				menu_nnw(t_data *data);
+void				menu_tng(t_data *data);
+void				menu_tng_mode(t_data *data);
 
 /*
 **	fonctions de gestion des fichier .nnw et .tng

@@ -52,23 +52,31 @@ void			work(t_data *data)
 {
 	int			j;
 	int			k;
-	int			res;
+	int			res[3];
 
 	j = 0;
 	while (j < data->tng_nb)
 	{
 		k = 0;
+		res[1] = 0;
 		printf("----------------------\n");
 		print_tab(data->tng_array[j]);
 		while (k < 10)
 		{
-			res = calcul(j, k, data);
+			res[0] = calcul(j, k, data);
 			if (data->tng_mode == 1)
 				learn(data, j, k, res);
-			if (res == 1)
-				printf("------ Res = %d. ------\n", k);
+			if (res[0] == 1)
+			{
+				res[2] = k;
+				res[1] += 1;
+			}
 			k++;
 		}
+		if (res[1] == 1)
+			printf("------ Res = %d. ------\n", res[2]);
+		else
+			printf("-- No or many result --\n");
 		free(data->tng_array[j]);
 		data->tng_array[j] = NULL;
 		j++;

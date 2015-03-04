@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:40:08 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 17:11:00 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/04 16:51:54 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ float			**create_array(int x, int y)
 
 char			**join_line(char **line, char ***read)
 {
-	size_t		i;
-	size_t		len;
+	int			i;
+	int			len;
 	char		**new;
 
 	i = 0;
 	len = 0;
 	while (*read && (*read)[len])
 		len++;
-	if (!(new = (char **)malloc(sizeof(char *) * len + 2)))
+	if (!(new = (char **)malloc(sizeof(char *) * (len + 2))))
 		exit(print_error(MAL_ERR));
 	new[len + 1] = NULL;
 	while (i++ < len)

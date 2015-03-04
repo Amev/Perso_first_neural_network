@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:38:50 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:51:11 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/04 16:47:16 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				menu(t_data *data)
 		ft_strdel(&data->nnw);
 	}
 	if (!open_nnw_file(data))
-		weight_init(&data->weight);
+		weight_init(data);
 	if (!data->tng_mode)
 	{
 		ft_printf("{grn}Choose working mode :\n\t[1] : Training mode.\n\t[0] : Read only.\n$>{eoc} {wht}");
@@ -75,12 +75,13 @@ int				menu(t_data *data)
 			exit(print_error(MAL_ERR));
 		if (!ft_strcmp("exit", data->tng))
 			exit(1);
-		extension = ft_strrchr(data->nnw, '.');
+		extension = ft_strrchr(data->tng, '.');
 		if (extension && !ft_strcmp(extension, ".tng"))
 			break ;
 		ft_printf("{eoc} {red}Bad extension, *.tng file needed.{eoc}\n{grn}$>{eoc} {wht}");
 		ft_strdel(&data->tng);
 	}
+	open_tng_file(data);
 	return (1);
 }
 
@@ -89,7 +90,11 @@ int				main(int ac, char **av)
 	t_data		data;
 
 	(void)ac[av - 1];
-	menu(&data);
-	work(&data);
+	while (1)
+	{
+		menu(&data);
+		work(&data);
+		update_nnw_file(&data);
+	}
 	return (0);
 }

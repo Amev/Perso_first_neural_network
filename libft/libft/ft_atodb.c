@@ -6,7 +6,7 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 13:11:15 by vame              #+#    #+#             */
-/*   Updated: 2015/02/09 14:16:55 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/04 11:32:11 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static const char		*ft_clean(const char *str, int *sign)
 	return (str);
 }
 
-float					ft_atodb(const char *str)
+double					ft_atodb(const char *str)
 {
-	long long double	res;
-	long long double	tmp;
+	long double			res;
+	long double			tmp;
 	int					sign;
 
 	res = 0;
@@ -47,11 +47,11 @@ float					ft_atodb(const char *str)
 	}
 	if (*str && *str++ == '.' && (tmp = 10))
 	{
-		while (*str && ft_isdigit(*str) == 1 &&)
+		while (*str && ft_isdigit(*str) == 1)
 		{
-			res += sign * (*str++ - '0') * / tmp;
+			res += sign * (*str++ - '0') / tmp;
 			tmp *= 10;
 		}
-	}	
+	}
 	return ((double)res);
 }

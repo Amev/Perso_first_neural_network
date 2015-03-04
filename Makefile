@@ -6,7 +6,7 @@
 #    By: vame <vame@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/23 11:23:10 by vame              #+#    #+#              #
-#    Updated: 2015/03/02 15:58:32 by vame             ###   ########.fr        #
+#    Updated: 2015/03/04 13:18:07 by vame             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ INC = ./neural_network_1.h
 TMP = $(INC:.h=.h.gch)
 
 SRC =	./main.c \
+		./work.c \
 		./tools.c \
 		./weight.c \
 		./nnw_file.c \
@@ -48,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) lib clean fclean re
+.PHONY: all lib clean fclean re

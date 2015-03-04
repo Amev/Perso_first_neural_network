@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:40:25 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 17:07:24 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/04 16:01:39 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct 		s_data
 	int				fd;
 	int				tng_nb;
 	int				tng_mode;
-	int				tng_array;
+	int				**tng_array;
 	char			*nnw;
 	char			*tng;
 	float			**weight;
@@ -45,7 +45,9 @@ typedef struct 		s_data
 **	fonctions de gestion des poids
 */
 
-void				weight_init(float ***weight);
+void				weight_init(t_data *data);
+int					calcul(int j, int k, t_data *data);
+float				weight_calc(float value, int wanted_v, int out_v, int in_v);
 
 /*
 **	fonctions du menu
@@ -54,10 +56,12 @@ void				weight_init(float ***weight);
 int					menu(t_data *data);
 
 /*
-**	fonctions de gestion du fichier .nnw
+**	fonctions de gestion des fichier .nnw et .tng
 */
 
 int					open_nnw_file(t_data *data);
+int					open_tng_file(t_data *data);
+int					update_nnw_file(t_data *data);
 
 /*
 **	outils pour les fichiers
@@ -72,5 +76,13 @@ char				**read_file(char *path);
 */
 
 int					print_error(int err);
+
+/*
+**	fonctions de traitement des donnees
+*/
+
+void				work(t_data *data);
+void				learn(t_data *data, int j, int k, int res);
+void				print_tab(int *tab);
 
 #endif

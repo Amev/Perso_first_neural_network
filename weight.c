@@ -6,13 +6,26 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:39:31 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:05:19 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/04 15:58:40 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  #include "neural_network_1.h"
 
-void			weight_init(float ***weight)
+int				calcul(int j, int k, t_data *data)
+{
+	float		result;
+	int			i;
+
+	i = 0;
+	result = 0;
+	while (i++ < 30)
+		if (data->tng_array[j][i - 1] == 1)
+			result += data->weight[k][i - 1];
+	return (result > 0 ? 1 : 0);
+}
+
+void			weight_init(t_data *data)
 {
 	int 		i;
 	int 		j;
@@ -22,7 +35,7 @@ void			weight_init(float ***weight)
 	{
 		i = 0;
 		while (i < 30)
-			(*weight)[i++][j] = (float)(rand()%100 - 50);
+			data->weight[j][i++] = (float)(rand() % 100 - 50);
 		j++;
 	}
 }

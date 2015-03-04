@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_ext.h                                        :+:      :+:    :+:   */
+/*   work.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/23 11:14:09 by vame              #+#    #+#             */
-/*   Updated: 2015/03/02 16:49:03 by vame             ###   ########.fr       */
+/*   Created: 2015/03/02 15:38:50 by vame              #+#    #+#             */
+/*   Updated: 2015/03/02 16:51:11 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_EXT_H
-# define LIBFT_EXT_H
+#include "neural_network_1.h"
 
-# include "libft/libft.h"
-# include "gnl/get_next_line.h"
-# include "printf/ft_printf.h"
+void			just_print_res(float *tng_array, t_data *data)
+{
+	
+}
 
-#endif
+void			work(t_data *data)
+{
+	int			j;
+
+	j = 0;
+	while (j < data->tng_nb)
+	{
+		if (data->tng_mode == 1)
+			learn(data->tng_array[j], data);
+		else
+			just_print_res(data->tng_array[j], data);
+		free(data->tng_array[j]);
+		data->tng_array[j++] = NULL;
+	}
+	free(data->tng_array);
+	data->tng_array = NULL;
+}

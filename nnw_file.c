@@ -44,6 +44,7 @@ int				open_tng_file(t_data *data)
 				|| data->tng_array[j - 1][i - 2] < 0)
 			exit(print_error(FMT_ERR));
 	}
+	data->tng_nb = j - 1;
 	return (1);
 }
 
@@ -75,5 +76,30 @@ int				open_nnw_file(t_data *data)
 	}
 	if (j != 11)
 		exit(print_error(FMT_ERR));
+	if (remove(data->nnw))
+		exit(print_error(RMV_ERR));
+	return (1);
+}
+
+int				update_nnw_file(t_data *data)
+{
+	int			i;
+	int			j;
+	int			fd;
+
+	j = 0;
+	if ((fd = open(data->nnw, O_WRONLY & O_CREATE)) == -1)	//revoir flag création du fichier
+		exit(print_error(OPN_ERR));
+	while (j < 10)
+	{
+		i = 0;
+		while (i < 30)
+			fprintf(fd, i == 0 ? "%f" : " %f", data->weight[j][i++]);
+		fprintf(fd, "\n");
+		free(data->weight[j]);
+		data->weight[j++] = NULL;
+	}
+	free(data->weight);
+	data->weight = NULL;
 	return (1);
 }

@@ -90,5 +90,6 @@ int				main(int ac, char **av)
 
 	(void)ac[av - 1];
 	menu(&data);
+	work(&data);
 	return (0);
 }

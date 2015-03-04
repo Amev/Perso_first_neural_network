@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atodb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static const char	*ft_clean(const char *str, int *sign)
+static const char		*ft_clean(const char *str, int *sign)
 {
 	while (*str == ' ' || *str == '\n' || *str == '\v' || *str == '\t' ||
 			*str == '\r' || *str == '\f')
@@ -27,11 +27,11 @@ static const char	*ft_clean(const char *str, int *sign)
 	return (str);
 }
 
-int					ft_atoi(const char *str)
+float					ft_atodb(const char *str)
 {
-	long long int	res;
-	long long int	tmp;
-	int				sign;
+	long long double	res;
+	long long double	tmp;
+	int					sign;
 
 	res = 0;
 	sign = 1;
@@ -45,5 +45,13 @@ int					ft_atoi(const char *str)
 		else if (tmp < 0 && res >= tmp)
 			return (0);
 	}
-	return ((int)res);
+	if (*str && *str++ == '.' && (tmp = 10))
+	{
+		while (*str && ft_isdigit(*str) == 1 &&)
+		{
+			res += sign * (*str++ - '0') * / tmp;
+			tmp *= 10;
+		}
+	}	
+	return ((double)res);
 }

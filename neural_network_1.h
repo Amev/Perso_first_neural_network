@@ -28,10 +28,12 @@
 # define GNL_ERR 5
 # define FMT_ERR 6
 # define TNG_ERR 7
+# define RMV_ERR 8
 
 typedef struct 		s_data
 {
 	int				fd;
+	int				tng_nb;
 	int				tng_mode;
 	int				tng_array;
 	char			*nnw;

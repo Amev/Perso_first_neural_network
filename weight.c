@@ -42,5 +42,5 @@ void			weight_init(t_data *data)
 
 float			weight_calc(float value, int wanted_v, int out_v, int in_v)
 {
-	return (value + (wanted_v - out_v) * in_v * 10.00);
+	return (value + (wanted_v - out_v) * in_v * 0.50);
 }

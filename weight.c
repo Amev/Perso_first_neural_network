@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:39:31 by vame              #+#    #+#             */
-/*   Updated: 2015/03/04 15:58:40 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/06 09:55:29 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void			weight_init(t_data *data)
 
 float			weight_calc(float value, int wanted_v, int out_v, int in_v)
 {
-	return (value + (wanted_v - out_v) * in_v * 0.50);
+	return (value + (wanted_v - out_v) * in_v * 10);
 }

@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:38:50 by vame              #+#    #+#             */
-/*   Updated: 2015/03/04 17:05:01 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/06 10:12:40 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			learn(t_data *data, int j, int k, int res)
 	wanted_v = k == data->tng_array[j][30] ? 1 : 0;
 	while (i++ < 30)
 	{
-		in_v = data->tng_array[j][i];
+		in_v = data->tng_array[j][i - 1];
 		value = data->weight[k][i - 1];
 		data->weight[k][i - 1] = weight_calc(value, wanted_v, out_v, in_v);
 	}
@@ -65,7 +65,7 @@ void			work(t_data *data)
 		{
 			res[0] = calcul(j, k, data);
 			if (data->tng_mode == 1)
-				learn(data, j, k, res);
+				learn(data, j, k, res[0]);
 			if (res[0] == 1)
 			{
 				res[2] = k;
@@ -77,10 +77,6 @@ void			work(t_data *data)
 			printf("------ Res = %d. ------\n", res[2]);
 		else
 			printf("-- No or many result --\n");
-		free(data->tng_array[j]);
-		data->tng_array[j] = NULL;
 		j++;
 	}
-	free(data->tng_array);
-	data->tng_array = NULL;
 }

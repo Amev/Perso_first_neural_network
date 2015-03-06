@@ -6,7 +6,7 @@
 /*   By: vame <vame@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/02 15:39:47 by vame              #+#    #+#             */
-/*   Updated: 2015/03/04 17:01:38 by vame             ###   ########.fr       */
+/*   Updated: 2015/03/06 09:38:48 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,8 @@ int				update_nnw_file(t_data *data)
 		while (i++ < 30)
 			fprintf(fd, i == 1 ? "%f" : " %f", data->weight[j][i - 1]);
 		fprintf(fd, "\n");
-		free(data->weight[j]);
-		data->weight[j++] = NULL;
+		j++;
 	}
-	free(data->weight);
-	data->weight = NULL;
 	if (fclose(fd))
 		exit(print_error(CLS_ERR));
 	return (1);
